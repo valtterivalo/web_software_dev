@@ -1,0 +1,28 @@
+<% layout("./layouts/layout.eta") %>
+
+<h1>Shared shopping lists</h1>
+
+<a href="/">Link to the main page</a>
+
+<h2>Add a list</h2>
+
+<form method="POST" action="/lists">
+  Name: <input type="text" name="name" />
+  <input type="submit" value="Create list!" />
+</form>
+
+<h2>Active lists</h2>
+
+<% if (it.lists) { %>
+<ul>
+<% it.lists.forEach((list) => { %>
+  <li>
+  <a href="/lists/<%= list.id %>"><%= list.name %></a>
+  <form method="POST" action="/lists/<%= list.id %>/deactivate">
+  <input type="submit" value="Deactivate list!" />
+  </li>
+<% }); %>
+</ul>
+<% } else { %>
+<p>No active lists.</p>
+<% } %>
