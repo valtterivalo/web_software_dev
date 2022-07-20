@@ -28,5 +28,5 @@
     <% }); %>
     </ul>
 <% } else { %>
-    <% console.log(it.items) %>
+    <p>The list is empty</p>
 <% } %>

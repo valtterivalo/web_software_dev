@@ -38,8 +38,7 @@ const setCollected = async (list_id, item_id) => {
     );
     let result = await executeQuery(
         "SELECT * FROM shopping_list_items " +
-        "WHERE shopping_list_id = $1 " +
-        "ORDER BY collected, name;",
+        "WHERE shopping_list_id = $1;",
         list_id,
     )
     if (result.rows && result.rows.length > 0) {

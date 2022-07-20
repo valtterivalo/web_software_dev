@@ -32,6 +32,10 @@ const viewList = async (request) => {
         list: await listService.findById(urlParts[2]),
         items: await listItemService.findCurrentItems(urlParts[2]),
     };
+    if (data.items) {
+    data.items.sort((a, b) => a.name.localeCompare(b.name));
+    data.items.sort((a, b) => Number(a.collected) - Number(b.collected))
+    }
     console.log('data in current list', data.items)
     return new Response(await renderFile("list.eta", data), responseDetails);
 };
