@@ -24,6 +24,7 @@
       <% } %>
       <form action="/lists/<%= it.list.id %>/items/<%= item.id %>/collect" method="POST">
         <input type="submit" value="Mark collected!" /> <%= item.id %>
+        </form>
       </li>
     <% }); %>
     </ul>
