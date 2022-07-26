@@ -1,5 +1,4 @@
 import { executeQuery } from "../database/database.js";
-import { redirectTo } from "../utils/requestUtils.js";
 
 const create = async (name) => {
     await executeQuery("INSERT INTO shopping_lists (name) VALUES ($1);", name);
@@ -42,7 +41,6 @@ const deactivateList = async (id) => {
         "SET active = false " +
         "WHERE id = $1;",
         id)
-    return;
 }
 
 export { create,

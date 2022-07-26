@@ -17,7 +17,7 @@ const addList = async (request) => {
     return redirectTo("/lists");
 };
 
-const viewLists = async (request) => {
+const viewLists = async () => {
     const data = {
         lists: await listService.findAllActiveLists(),
     };
@@ -36,7 +36,6 @@ const viewList = async (request) => {
     data.items.sort((a, b) => a.name.localeCompare(b.name));
     data.items.sort((a, b) => Number(a.collected) - Number(b.collected))
     }
-    console.log('data in current list', data.items)
     return new Response(await renderFile("list.eta", data), responseDetails);
 };
 

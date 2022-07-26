@@ -1,7 +1,6 @@
 import { executeQuery } from "../database/database.js";
 
 const createListItem = async (list_id, item_name) => {
-    console.log(`Creating an item in list id ${list_id} with item name ${item_name}`)
     await executeQuery(
         "INSERT INTO shopping_list_items (shopping_list_id, name) VALUES ($1, $2);",
         list_id, item_name,
@@ -29,7 +28,6 @@ const findAllItems = async () => {
 };
 
 const setCollected = async (list_id, item_id) => {
-    console.log(`Setting item with id ${item_id} collected in list id ${list_id}`)
     await executeQuery(
         "UPDATE shopping_list_items " +
         "SET collected = true " +
